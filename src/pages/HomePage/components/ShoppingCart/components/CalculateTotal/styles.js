@@ -10,10 +10,10 @@ const Container = styled.div`
   height: 100%;
   & > div {
     padding: 20px;
-    border-top: 1px solid ${colors.green};
+    border-top: 1px solid ${colors.midPink};
     display: flex;
     justify-content: space-between;
-    color: ${colors.darkerGreen};
+    color: ${colors.darkPink};
   }
   .total {
     font-weight: bold;

@@ -1,15 +1,16 @@
 import styled from "styled-components";
-import colors from "../../../../config/colors";
+import colors from "../../config/colors";
 
 export const Container = styled.header`
   height: 80px;
   width: 100%;
   padding: 40px 0;
-  background: ${colors.waterGreen};
+  background: ${colors.midPink};
   color: ${colors.blackGray};
   font-weight: bold;
   display: flex;
   justify-content: center;
+
   h1 {
     font-size: 2rem;
   }
@@ -27,10 +28,25 @@ export const UserBox = styled.div`
   p {
     margin-left: 10px;
   }
+  cursor: pointer;
+  margin-right: 20px;
 `;
 export const Avatar = styled.div`
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background: ${colors.darkerGreen};
+  background: ${colors.darkPink};
+`;
+
+export const LogoBox = styled.div`
+  cursor: pointer;
+`;
+export const RightBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const LogOutBox = styled.div`
+  cursor: pointer;
+  font-size: 22px;
 `;

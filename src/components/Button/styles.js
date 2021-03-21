@@ -5,11 +5,12 @@ import typography from "../../config/typography";
 const Container = styled.button`
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || "100%"};
-  background: ${colors.darkerGreen};
+  font-size: ${(props) => props.fontSize || "16px"};
+  border-radius: ${(props) => props.borderRadius || "0px"};
+  background: ${colors.midPink};
   font-family: ${typography.Roboto};
   font-weight: bold;
-  font-size: 15px;
-  color: ${colors.white};
+  color: ${colors.blackGray};
   cursor: pointer;
 `;
 

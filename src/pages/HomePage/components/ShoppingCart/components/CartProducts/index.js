@@ -4,15 +4,15 @@ import CartProductSnippet from "./components/CartProductSnippet";
 import { EmptyCartBox, ProductsList } from "./styles";
 
 export default function CartProducts() {
-  const { cart } = useCartContext();
+  const { cartProducts } = useCartContext();
   return (
     <ProductsList data-testid="cart-list">
-      {cart.length > 0 ? (
-        cart.map((item) => (
-          <CartProductSnippet item={item} key={item.product.id} />
+      {cartProducts.length > 0 ? (
+        cartProducts.map((item) => (
+          <CartProductSnippet item={item} key={item.product.SK} />
         ))
       ) : (
-        <EmptyCartBox>Add items to your cart</EmptyCartBox>
+        <EmptyCartBox>Adicione items ao carrinho</EmptyCartBox>
       )}
     </ProductsList>
   );

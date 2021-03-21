@@ -12,13 +12,13 @@ export const Card = styled.li`
 export const ImageBox = styled.div`
   height: 60%;
   width: 100%;
-  background: ${colors.green};
-  display:flex;
-  align-items:center;
+  background: ${colors.midPink};
+  display: flex;
+  align-items: center;
   justify-content: center;
-  flex-shrink:0;
-  overflow:hidden;
-  img{
+  flex-shrink: 0;
+  overflow: hidden;
+  img {
     margin-bottom: 25px;
     width: 100%;
   }
@@ -26,7 +26,7 @@ export const ImageBox = styled.div`
 export const InfoBox = styled.div`
   height: 30%;
   width: 100%;
-  background: ${colors.whiteGray};
+  background: ${colors.lightPink};
   font-size: 16px;
   padding: 15px;
   h2 {
@@ -37,5 +37,9 @@ export const InfoBox = styled.div`
   p {
     color: ${colors.darkGray};
     margin-bottom: 5px;
+  }
+
+  .price {
+    font-weight: bold;
   }
 `;

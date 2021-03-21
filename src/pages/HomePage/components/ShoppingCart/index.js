@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Button from "../../../../components/Button";
 import MessageBox from "../../../../components/MessageBox";
 import { useCartContext } from "../../../../contexts/CartContext";
@@ -8,34 +9,36 @@ import DiscountSection from "./components/DiscountSection";
 import { Container, CartBox, ButtonBox } from "./styles";
 
 export default function ShoppingCart() {
-  const { cart } = useCartContext();
+  const { cartProducts } = useCartContext();
+  const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [buttonText, setButtonText] = useState("CHECKOUT");
   const [errorMessage, setErrorMessage] = useState(null);
-  function checkout() {
+  function handleCheckout() {
     setLoading(true);
     setDisabled(true);
-    if (cart.length === 0) {
-      setErrorMessage("Cart can't be empty");
+    if (cartProducts.length === 0) {
+      setErrorMessage("O carrinho não pode estar vazio!");
       setDisabled(false);
       setLoading(false);
     } else {
       setErrorMessage(null);
       setTimeout(() => {
-        setButtonText("ORDER MADE!");
+        setButtonText("Sucesso!");
         setLoading(false);
+        history.push("/checkout");
       }, 500);
     }
   }
   useEffect(() => {
-    setButtonText("CHECKOUT");
+    setButtonText("RESERVAR");
     setDisabled(false);
-  }, [cart]);
+  }, [cartProducts]);
   return (
     <Container data-testid="cart-section">
       <CartBox>
-        <h1>Shopping Cart</h1>
+        <h1>Carrinho</h1>
         <CartProducts />
         <DiscountSection />
         <CalculateTotal />
@@ -46,7 +49,7 @@ export default function ShoppingCart() {
           width="100%"
           height="100%"
           text={buttonText}
-          onClick={checkout}
+          onClick={handleCheckout}
           loading={loading}
           disabled={disabled}
         />

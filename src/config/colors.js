@@ -2,14 +2,16 @@ const colors = {
   white: "#FFF",
   whiteGray: "#EFEFEF",
   lighterGray: "#D8D8D8",
+  lightGray: "#666666",
   midGray: "#999999",
   darkGray: "#666666",
   blackGray: "#333333",
-  green: "#2fb67a",
-  darkerGreen: "#429c8b",
   yellow: "#f3e29f",
-  waterGreen: "#b5dedc",
   red: "#D8490C",
+  backPink: "#FAF5ED",
+  lightPink: "#ead8ce",
+  midPink: "#D7B6A2",
+  darkPink: "#b59482",
 };
 
 export default colors;

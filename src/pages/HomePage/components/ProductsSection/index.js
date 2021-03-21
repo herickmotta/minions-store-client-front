@@ -31,7 +31,7 @@ function ProductsSection() {
   return (
     <Container data-testid="products-container">
       {loading ? (
-        <Spinner color={colors.darkerGreen} fontSize="40px" />
+        <Spinner color={colors.darkPink} fontSize="40px" />
       ) : (
         products.map((p) => <ProductCard product={p} key={p.SK} />)
       )}

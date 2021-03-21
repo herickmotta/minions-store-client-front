@@ -4,7 +4,7 @@ import colors from "../../../../config/colors";
 export const Container = styled.div`
   width: 360px;
   @media (max-width: 750px) {
-    width:320px;
+    width: 320px;
     width: 100vw;
   }
 `;
@@ -15,18 +15,18 @@ export const CartBox = styled.div`
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  background: ${colors.waterGreen};
+  background: ${colors.lightPink};
   h1 {
     font-size: 1.4rem;
     font-weight: bold;
-    background: ${colors.green};
-    color: ${colors.white};
+    background: ${colors.midPink};
+    color: ${colors.blackGray};
     width: 100%;
     text-align: center;
     padding: 15px 0;
   }
   @media (max-width: 750px) {
-    border-radius:0;
+    border-radius: 0;
   }
 `;
 
@@ -41,6 +41,6 @@ export const ButtonBox = styled.div`
     margin-bottom: 10px;
   }
   @media (max-width: 750px) {
-    border-radius:0;
+    border-radius: 0;
   }
 `;

@@ -3,107 +3,60 @@ import { useCartContext } from "../../../../../../contexts/CartContext";
 import Container from "./styles";
 
 function CalculateTotal() {
-  const { cart, voucher } = useCartContext();
+  const { cartProducts, cartInfo, setCartInfo } = useCartContext();
   const [subTotal, setSubTotal] = useState(0);
-  const [shipping, setShipping] = useState(0);
-  const [freeShippingValue, setFreeShippingValue] = useState(400);
+  const [shipping, setShipping] = useState(3000);
   const [discount, setDiscount] = useState(0);
   const [total, setTotal] = useState(0);
-  const [totalWeight, setTotalWeight] = useState(0);
 
   function getSubTotal() {
     let sum = 0;
-    let weight = 0;
-    cart.forEach((item) => {
+    cartProducts.forEach((item) => {
       sum += item.product.price * item.quantity;
-      weight += item.quantity;
     });
     setSubTotal(sum);
-    setTotalWeight(weight);
-  }
-  function getShipping() {
-    if (subTotal > freeShippingValue) {
-      setShipping(0);
-    } else if (totalWeight <= 10) {
-      setShipping(30);
-    } else {
-      const aboveWeight = totalWeight - 10;
-      const shippingCost = Math.floor(aboveWeight / 5) * 7 + 30;
-      setShipping(shippingCost);
-    }
-  }
-
-  function getDiscount() {
-    if (!voucher) {
-      setDiscount(0);
-      return;
-    }
-    setFreeShippingValue(400);
-    switch (voucher.type) {
-      case "percentual":
-        setDiscount(subTotal * (voucher.amount / 100));
-        break;
-      case "fixed":
-        setDiscount(voucher.amount);
-        break;
-      case "shipping":
-        setFreeShippingValue(voucher.minValue);
-        setDiscount(0);
-        break;
-      default:
-        setDiscount(0);
-    }
   }
 
   function getTotal() {
-    let totalSum = subTotal + shipping - discount;
+    let totalSum = subTotal + shipping;
     if (totalSum < 0) totalSum = 0;
     setTotal(totalSum);
   }
 
   useEffect(() => {
     getSubTotal();
-  }, [cart]);
-
-  useEffect(() => {
-    getDiscount();
-  }, [voucher, subTotal]);
-
-  useEffect(() => {
-    getShipping();
-  }, [subTotal, freeShippingValue]);
+  }, [cartProducts]);
 
   useEffect(() => {
     getTotal();
   }, [subTotal, discount, shipping]);
 
+  useEffect(() => {
+    setCartInfo({ ...cartInfo, discount, shipping, subTotal, total });
+  }, [total]);
   return (
     <Container>
       <div>
-        <span>Subtotal</span>
-        <span data-testid="sbt-field">{`$ ${
-          (subTotal / 100)
+        <span>Sub Total</span>
+        <span data-testid="sbt-field">{`R$ ${(subTotal / 100)
           .toFixed(2)
           .replace(/\./g, ",")}`}</span>
       </div>
       <div>
-        <span>Shipping</span>
-        <span data-testid="ship-field">{`$ ${
-          (shipping / 100)
+        <span>Frete</span>
+        <span data-testid="ship-field">{`R$ ${(shipping / 100)
           .toFixed(2)
           .replace(/\./g, ",")}`}</span>
       </div>
       <div>
-        <span>Discount</span>
-        <span data-testid="disc-field">{`$ ${
-          (discount / 100)
+        <span>Desconto</span>
+        <span data-testid="disc-field">{`R$ ${(discount / 100)
           .toFixed(2)
           .replace(/\./g, ",")}`}</span>
       </div>
       <div className="total">
         <span>Total</span>
-        <span data-testid="ttl-field">{`$ ${
-          (total / 100)
+        <span data-testid="ttl-field">{`R$ ${(total / 100)
           .toFixed(2)
           .replace(/\./g, ",")}`}</span>
       </div>

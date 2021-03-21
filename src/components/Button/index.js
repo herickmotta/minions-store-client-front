@@ -9,6 +9,7 @@ export default function Button({
   text,
   height,
   width,
+  fontSize,
 }) {
   return (
     <Container
@@ -17,6 +18,7 @@ export default function Button({
       height={height}
       onClick={onClick}
       disabled={disabled}
+      fontSize={fontSize}
     >
       {loading ? <Spinner /> : text}
     </Container>

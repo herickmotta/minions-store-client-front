@@ -5,13 +5,21 @@ const CartContext = createContext();
 export default CartContext;
 
 export function CartProvider(props) {
-  const [cart, setCart] = useState([]);
+  const [cartProducts, setCartProducts] = useState([]);
+  const [cartInfo, setCartInfo] = useState({});
   const [voucher, setVoucher] = useState(null);
 
   return (
     <CartContext.Provider
       {...props}
-      value={{ cart, setCart, voucher, setVoucher }}
+      value={{
+        cartProducts,
+        cartInfo,
+        setCartProducts,
+        setCartInfo,
+        voucher,
+        setVoucher,
+      }}
     >
       {props.children}
     </CartContext.Provider>

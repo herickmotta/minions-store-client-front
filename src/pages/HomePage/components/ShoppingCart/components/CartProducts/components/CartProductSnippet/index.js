@@ -3,37 +3,41 @@ import { useCartContext } from "../../../../../../../../contexts/CartContext";
 import { Box, ImageBox, InfoBox, AddOrRemoveItem } from "./styles";
 
 export default function CartProductSnippet({ item }) {
-  const { cart, setCart } = useCartContext();
+  const { cartProducts, setCartProducts } = useCartContext();
   const { name, price, photo } = item.product;
 
   function addQuantity() {
     if (item.product.available <= 0) return;
     item.quantity += 1;
     item.product.available -= 1;
-    setCart([...cart]);
+    setCartProducts([...cartProducts]);
   }
 
   function removeQuantity() {
     item.quantity -= 1;
     item.product.available += 1;
     if (item.quantity <= 0) {
-      const itemIndex = cart.findIndex((i) => i.product.SK === item.product.SK);
+      const itemIndex = cartProducts.findIndex(
+        (i) => i.product.SK === item.product.SK
+      );
       if (itemIndex >= 0) {
-        cart.splice(itemIndex, 1);
+        cartProducts.splice(itemIndex, 1);
       }
     }
-    setCart([...cart]);
+    setCartProducts([...cartProducts]);
   }
   return (
     <Box data-testid="cart-item">
       <ImageBox>
-        <img src={photo} alt="product"/>
+        <img src={photo} alt="product" />
       </ImageBox>
       <InfoBox>
         <h2>{name}</h2>
         <div>
           <p>{`Quantity: ${item.quantity}`}</p>
-          <p>{`R$ ${(price * item.quantity / 100).toFixed(2).replace(/\./g, ",")}`}</p>
+          <p>{`R$ ${((price * item.quantity) / 100)
+            .toFixed(2)
+            .replace(/\./g, ",")}`}</p>
         </div>
       </InfoBox>
       <AddOrRemoveItem>

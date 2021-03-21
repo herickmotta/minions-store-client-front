@@ -10,7 +10,7 @@ export default function Spinner({ color, onClick }) {
       <ReloadOutlined
         style={{
           fontSize: 30,
-          color: color || colors.darkerGreen,
+          color: color || colors.darkPink,
           textAlign: "center",
           padding: "5px",
           cursor: "pointer",
