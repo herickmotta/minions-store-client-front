@@ -24,7 +24,6 @@ export default function Checkout() {
         { ...cartInfo, products: cartProducts },
         userSub
       );
-      console.log(data);
       setOrder(data);
     } catch (e) {
       console.log(e);
