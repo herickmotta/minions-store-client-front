@@ -34,7 +34,7 @@ export default function CartProductSnippet({ item }) {
       <InfoBox>
         <h2>{name}</h2>
         <div>
-          <p>{`Quantity: ${item.quantity}`}</p>
+          <p>{`Quantidade: ${item.quantity}`}</p>
           <p>{`R$ ${((price * item.quantity) / 100)
             .toFixed(2)
             .replace(/\./g, ",")}`}</p>

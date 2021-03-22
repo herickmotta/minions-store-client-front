@@ -2,7 +2,6 @@ import { API } from "aws-amplify";
 
 class OrdersService {
   async postOrder(cart, userSub) {
-    console.log(cart);
     try {
       const data = await API.post("minions", `/users/${userSub}/orders`, {
         body: cart,
