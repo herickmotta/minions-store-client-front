@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Header from "../../components/Header";
+import Spinner from "../../components/Spinner";
+import colors from "../../config/colors";
 import { useCartContext } from "../../contexts/CartContext";
 import { useUserContext } from "../../contexts/UserContext";
 import OrdersService from "../../services/OrdersService";
@@ -42,7 +44,11 @@ export default function Checkout() {
         <Container>
           <h1>Sucesso!</h1>
           <h1>Informações sobre seu pedido:</h1>
-          {order && <Order orderInfo={order} />}
+          {order ? (
+            <Order orderInfo={order} />
+          ) : (
+            <Spinner color={colors.darkPink} fontSize="40px" />
+          )}
         </Container>
       </MainContent>
     </Page>
